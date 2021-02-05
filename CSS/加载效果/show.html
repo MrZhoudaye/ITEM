@@ -1,0 +1,239 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>网页顶部下拉的jquery在线客服</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        #qqlist a {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            display: block;
+            line-height: 28px;
+            vertical-align: middle;
+        }
+
+        img {
+            line-height: 28px;
+            vertical-align: middle;
+            text-align: center;
+            padding-bottom: 6px;
+        }
+
+        #cs {
+            width: 100%;
+            height: 0px;
+            border-bottom: 3px solid red;
+            -webkit-box-shadow: 2px 2px 2px #999;
+            position: relative;
+            top: 0px;
+            -moz-box-shadow: 2px 2px 2px #999;
+            box-shadow: 2px 2px 2px #999;
+        }
+
+        #qqlist {
+            position: absolute;
+            left: -200px;
+            top: 150px;
+            z-index: 1;
+        }
+
+        #qqlist ul li {
+            width: 80px;
+            height: 28px;
+            margin: 10px;
+        }
+
+        #bg {
+            width: 918px;
+            height: 500px;
+            position: absolute;
+            right: 10px;
+            display: none;
+            /* filter: alpha(opacity: 0); */
+            opacity: 0;
+        }
+
+        #btn {
+            width: 100px;
+            height: 20px;
+            margin: auto;
+            background: red;
+            -webkit-box-shadow: 2px 2px 2px #999;
+            border-radius: 0 0 8px 8px;
+            position: relative;
+            top: 0px;
+            -moz-box-shadow: 2px 2px 2px #999;
+            box-shadow: 2px 2px 2px #999;
+        }
+
+        #btn span {
+            display: block;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        #foot_bm a,
+        #foot_bm,
+        p,
+        p a {
+            color: #666;
+            position: relative;
+        }
+    </style>
+    <script>
+        function startMove(obj, json, fnEnd) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var bStop = true;
+                for (var attr in json) {
+                    var now = 0;
+                    if (attr == "opacity") {
+                        now = Math.round(parseFloat(getStyle(obj, attr)) * 100);
+                    }
+                    else {
+                        now = parseInt(getStyle(obj, attr));
+                    }
+                    var speed = (json[attr] - now) / 10;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                    if (now != json[attr]) bStop = false;
+                    if (attr == "opacity") {
+                        obj.style.filter = "alpha(opacity:" + (now + speed) + ")";
+                        obj.style.opacity = (now + speed) / 100;
+                    }
+                    else {
+                        obj.style[attr] = (now + speed) + "px";
+                    }
+                }
+                if (bStop) {
+                    clearInterval(obj.timer);
+                    if (fnEnd) fnEnd();
+                }
+            }, 30)
+        }
+        function startFlex(obj, json, fnEnd) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                var bStop = true;
+                var cur = 0;
+                for (var attr in json) {
+                    if (!obj.oSpeed) obj.oSpeed = {};
+                    if (!obj.oSpeed[attr]) obj.oSpeed[attr] = 0;
+                    cur = parseInt(getStyle(obj, attr));
+                    if (Math.abs(json[attr] - cur) > 1 || Math.abs(obj.oSpeed[attr]) > 1) {
+                        bStop = false;
+                        obj.oSpeed[attr] += (json[attr] - cur) / 5;
+                        obj.oSpeed[attr] *= 0.7;
+                        var maxSpeed = 65;
+                        if (Math.abs(obj.oSpeed[attr]) > maxSpeed) {
+                            obj.oSpeed[attr] = obj.oSpeed[attr] > 0 ? maxSpeed : -maxSpeed;
+                        }
+                        obj.style[attr] = cur + obj.oSpeed[attr] + "px";
+                    }
+                }
+                if (bStop) {
+                    clearInterval(obj.timer);
+                    if (fnEnd) fnEnd();
+                }
+            }, 30);
+        }
+        function getStyle(obj, name) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[name];
+            }
+            else {
+                return getComputedStyle(obj, false)[name];
+            }
+        }
+        window.onload = function () {
+            var oCs = document.getElementById('cs');
+            var oBtn = document.getElementById('btn').getElementsByTagName('span')[0];
+            var oImg = document.getElementById('bg');
+            var oLi = document.getElementById('qqlist').getElementsByTagName('li');
+            var on = 0;
+            for (var i = 0; i < oLi.length; i++) {
+                oLi[i].style.left = oLi[i].offsetLeft + "px";
+                oLi[i].style.top = oLi[i].offsetTop + "px";
+            }
+            for (var i = 0; i < oLi.length; i++) {
+                oLi[i].style.position = "absolute";
+                oLi[i].style.margin = 0;
+            }
+            function showImg() {
+                oImg.style.display = "block";
+                startMove(oImg, { opacity: 80 }, function () {
+                    showQQ(350);
+                });
+            }
+            function showQQ(iTarget) {
+                var i = 1;
+                startFlex(oLi[0], { left: iTarget });
+                timer = setInterval(function () {
+                    startFlex(oLi[i], { left: iTarget });
+                    i++;
+                    if (i >= oLi.length) {
+                        clearInterval(timer);
+                    }
+                }, 20);
+            }
+            oBtn.onclick = function () {
+                if (on == 0) {
+                    startFlex(oCs, { height: 500 }, function () {
+                        showImg();
+                        oBtn.innerHTML = "CLOSE";
+                    });
+                    on = 1;
+                }
+                else {
+                    showQQ(-200);
+                    timer2 = setInterval(function () {
+                        startMove(oImg, { opacity: 0 }, function () {
+                            oImg.style.display = "none";
+                            startMove(oCs, { height: 0 });
+                        })
+                        if (oCs.style.height == 0 + "px") {
+                            clearInterval(timer2);
+                            oBtn.innerHTML = "CONTACT US";
+                        }
+                    }, 500);
+                    on = 0;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="cs">
+        <div id="qqlist">
+            <ul>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的网站" /> 售前咨询</a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的站名" /> 售前咨询</a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的站名" /> 售前咨询</a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的站名" /> 售前咨询</a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的站名" /> 售前咨询</a></li>
+                <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes"><img border="0"
+                            src="http://wpa.qq.com/pa?p=2:123456789:52" alt="点这里发消息" title="您的站名" /> 售前咨询</a></li>
+            </ul>
+        </div>
+        <!-- <div id="bg"><img src="images/bgbg.png" /></div> -->
+    </div>
+    <div id="btn"><span>联系我们</span></div>
+</body>
+
+</html>

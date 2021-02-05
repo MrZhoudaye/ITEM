@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel</title>
+
+  <style>
+    ul li{
+      list-style: none;
+    }
+    .box{
+      width: 790px;
+      height: 340px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    .img{
+      padding: 0;
+      margin: 0;
+      width: 900%;
+      height: 340px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .img li{
+      width: 790px;
+      height: 340px;
+      float: left;
+    }
+    
+    .arrow{
+      display: none;
+    }
+
+    .box:hover .arrow{
+      display: block;
+    }
+
+    .arrow span{
+      width: 30px;
+      height: 60px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      line-height: 60px;
+      font-family: '宋体';
+      font-size: 24px;
+      background-color: rgba(0, 0, 0, .3);
+      color: #fff;
+      cursor: pointer;
+    }
+    .arrow .left{
+      left: 0;
+    }
+    .arrow .right{
+      right: 0;
+    }
+    .arrow span:hover{
+      background-color:rgba(0,0,0,.6) ;
+    }
+
+    .point{
+      width: 150px;
+      height: 10px;
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+    }
+    .point li{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      opacity: .7;
+    }
+    .point .point_active{
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- 图片 -->
+    <ul class="img">
+      <li>
+        <img src="./1.jpg" alt="">
+      </li>
+      <li>
+        <img src="./2.jpg" alt="">
+      </li>
+      <li>
+        <img src="./3.jpg" alt="">
+      </li>
+      <li>
+        <img src="./4.jpg" alt="">
+      </li>
+      <li>
+        <img src="./5.jpg" alt="">
+      </li>
+      <li>
+        <img src="./6.jpg" alt="">
+      </li>
+      <li>
+        <img src="./7.jpg" alt="">
+      </li>
+      <li>
+        <img src="./8.jpg" alt="">
+      </li>
+    </ul>
+
+    <!-- 左右箭头 -->
+    <div class="arrow">
+      <span class="left">&lt;</span>
+      <span class="right">&gt;</span>
+    </div>
+
+    <!-- 小圆点 -->
+    <ul class="point">
+      
+    </ul>
+  </div>
+</body>
+
+<script type="text/javascript">
+
+    // 1. js动态添加小圆点
+    // 2. js动态添加最后一张假图片
+    // 3. 实现左右焦点图 + 无缝滚动
+    // 4. 自动播放
+    // 5. 点击小圆点同步切换
+    // 6. 解决点击小圆点的bug
+  var box = document.querySelector('.box')
+  var leftArrow = document.querySelector('.left')
+  var rightArrow = document.querySelector('.right')
+
+  var img = document.querySelector('.img')
+  var point = document.querySelector('.point')
+
+  var imgWidth = img.children[0].offsetWidth
+  // 动态添加小圆点
+  var imgLength = img.children.length
+  for(var i=0;i<imgLength;i++){
+    point.appendChild(document.createElement('li'))
+  }
+
+  // 克隆一张假图片
+  img.appendChild(img.children[0].cloneNode(true))
+
+  // 核心变量，记录移出去图片的张数
+  var count = 0
+
+  leftArrow.onclick = function () {
+    
+    // 如果count小于0，说明往左是空白，需要显示假图片
+    if(count <= 0){
+      count = imgLength
+      img.style.left = -count*imgWidth + 'px'
+    }
+
+    count--
+    animate(-count*imgWidth, 50)
+    // console.log(count)
+
+    // 小圆点
+    for(var i=0;i<imgLength;i++){
+      point.children[i].classList.remove('point_active')
+    }
+    // 如果是假图片，就让第一个小圆点
+    if(count >= imgLength){
+      point.children[0].classList.add('point_active')
+    }else{
+      point.children[count].classList.add('point_active')
+    }
+  }
+
+  rightArrow.onclick = function () {
+    
+    // 如果count大于图片张数，说明往右是空白，需要显示第一张图片
+    if(count >= imgLength){
+      count = 0
+      img.style.left = 0 
+    }
+
+    count++
+    animate(-count*imgWidth, 50)
+    // console.log(count)
+    for(var i=0;i<imgLength;i++){
+      point.children[i].classList.remove('point_active')
+    }
+    // 如果是假图片，就让第一个小圆点
+    if(count >= imgLength){
+      point.children[0].classList.add('point_active')
+    }else{
+      point.children[count].classList.add('point_active')
+    }
+  }
+
+  // 初始化
+  for(var i=0;i<imgLength;i++){
+    point.children[i].index = i
+    point.children[i].onclick = function () {
+      
+      if(count >= imgLength){
+        count = 0
+        img.style.left = 0 
+      }
+
+      // 让图片去指定位置
+      animate(-this.index*imgWidth, 50)
+
+      for(var i=0;i<imgLength;i++){
+        point.children[i].classList.remove('point_active')
+      }
+      // 如果是假图片，就让第一个小圆点
+      if(count >= imgLength){
+        point.children[0].classList.add('point_active')
+      }else{
+        point.children[this.index].classList.add('point_active')
+      }
+
+      count = this.index
+
+    }
+  }
+
+  // 自动轮播
+  var timer = setInterval(() => {
+    rightArrow.onclick()
+  }, 2000);
+
+  // 鼠标移入停止轮播
+  box.onmouseenter = function () {
+    clearInterval(timer)
+  }
+  box.onmouseleave = function () {
+    timer = setInterval(() => {
+      rightArrow.onclick()
+    }, 2000);
+  }
+
+  // 定义一个移动函数
+  function animate(target,mov) {
+    // 自动轮播
+    clearInterval(img.move)
+    img.move = setInterval(function () {
+      
+      // 记录当前位置
+      var current = img.offsetLeft
+      // 判断左右
+      var flag = current > target ? -mov : mov
+
+      // 如果需要移动的距离小于每次移动的距离，就不在移动，且立即去目标位置
+      if(Math.abs(current - target) < Math.abs(flag)){
+        clearInterval(img.move)
+        img.style.left = target + 'px'
+      }
+      // 如果没有到指定位置
+      else{
+        current += flag
+        img.style.left = current + 'px'
+      }
+    }, 20);
+  }
+
+</script>
+</html>

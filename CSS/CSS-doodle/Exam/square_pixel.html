@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/css-doodle@0.13.10/css-doodle.min.js"></script>
+    <style>
+        html,
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <css-doodle>
+            @grid: 14 / 80%;
+
+            @random {
+                border-left: 1px solid #5d81bc;
+            }
+            @random {
+                border-top: 1px solid #5d81bc;
+            }
+            @random(.25) {
+                background: linear-gradient(
+                    @p(#fff, tan, #5d81bc), @lp
+                )
+                50% / @r(60%) @lr
+                no-repeat;
+            }
+            @random {
+                filter: drop-shadow(0 0 10px #fff);
+            }
+        </css-doodle>
+    </div>
+</body>
+
+</html>

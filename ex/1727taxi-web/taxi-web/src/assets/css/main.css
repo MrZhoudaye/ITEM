@@ -1,0 +1,11 @@
+.clear-float{
+  zoom: 1;
+}
+
+.clear-float:after{
+  content: "";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+}

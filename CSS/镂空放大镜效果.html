@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 440px;
+            height:440px;
+            margin-top: 50px;
+            margin-left: 50px;
+        }
+        .old{
+            position: relative;
+            overflow: hidden;
+            width:440px;
+            height:440px;
+        }
+
+        .light{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width:100px;
+            height:100px;
+            outline: 500px solid #000;
+            outline: 500px solid rgba(0, 0, 0, .5);
+            background: url(about:black);
+            background: linear-gradient(to top,transparent,transparent);
+            filter: alpha(opacity=50);
+            cursor: move;
+        }
+
+        .cutBox{
+            width:100px;
+            height: 100px;
+            border: 2px solid #000;
+            float: left;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hide{
+            display: none;
+        }
+
+        #big{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="old">
+            <img src="./statics/老天爷救救我.jpg" alt="">
+            <div class="light hide"></div>
+        </div>
+        <div class="cutBox hide">
+            <img id="big" src="./statics/老天爷救救我.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+
+    var box = document.querySelector(".box")
+    var old = document.querySelector(".old")
+    var cutBox = document.querySelector(".cutBox")
+    var light = document.querySelector(".light")
+    var big = document.querySelector("#big")
+
+    var X, Y
+
+    old.onmouseover = function(){
+        cutBox.style.display = "block"
+        light.style.display = "block"
+    }
+
+    old.onmousemove = function(e){
+        var distanceX = e.pageX - box.offsetLeft - light.offsetWidth/2
+        var distanceY = e.pageY - box.offsetTop - light.offsetHeight/2
+
+        if(distanceX < 0){
+            distanceX = 0
+        }
+        if(distanceY < 0){
+            distanceY = 0
+        }
+
+        var maxH = old.offsetHeight - light.offsetHeight
+        if(distanceY > maxH){
+            distanceY = maxH
+        }
+        var maxW = old.offsetWidth - light.offsetWidth
+        if(distanceX > maxW){
+            distanceX = maxW
+        }
+
+        console.log(distanceX,distanceY)
+        light.style.left = distanceX + 'px'
+        light.style.top = distanceY + 'px'
+
+        // light可以移动的距离   big需要移动的距离
+        // light能移动的最大距离   big能移动的最大距离
+        var bigW = - distanceX * (big.offsetWidth - cutBox.offsetWidth)/maxH
+        var bigH = - distanceY * (big.offsetWidth - cutBox.offsetWidth)/maxH;
+
+        big.style.top = bigH + 'px'
+        big.style.left = bigW + 'px'
+        
+
+    }
+
+    old.onmouseleave = function(){
+        cutBox.style.display = "none"
+        light.style.display = "none"
+    }
+</script>
+</html>

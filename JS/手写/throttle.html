@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throttle</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+
+  </div>
+  <script>
+
+    // 实现节流
+    function throttle(fn, wait) {
+      let flag = true
+      return function () {
+        let context = this
+        let args = arguments
+        if(!flag) return
+        flag = false
+        setTimeout(() => {
+          fn.apply(context,args)
+          flag = true
+        }, wait);
+      }
+    }
+
+    // 箭头函数版
+    function throttle1(params) {
+      let flag = true
+      return (...args) => {
+        if(!flag)return
+        flag = false
+        setTimeout(() => {
+          fn.apply(this,args)
+          flag = true
+        }, wait);
+      }
+    }
+    
+
+    document.querySelector(".box").onclick = throttle(clickon,1000)
+
+    function clickon() {
+      console.log("我点击了")
+    }
+
+  </script>
+</body>
+
+</html>

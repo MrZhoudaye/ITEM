@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>换行、对齐</title>
+  <style>
+    /* 单行溢出 */
+    .text1{
+      color:goldenrod;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* 多行溢出 */
+    .text2{
+      color:green;
+      width:100%;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;/*盒子排列方式*/
+      -webkit-line-clamp: 2;/*行数*/
+      word-break:break-all;/*任意位置换行*/
+    }
+
+    /* 不换行 */
+    .text3{
+      color: hotpink;
+      white-space: nowrap;
+    }
+    /* 自动换行 */
+    .text4{
+      color:indigo;
+      word-wrap: break-word;
+      word-break: normal;
+    }
+    /* 强制换行 */
+    .text5{
+      color:khaki;
+      word-break: break-all;
+    }
+
+    /* 两端对齐 */
+    .text6{
+      text-align: justify;
+      text-align-last: justify;
+    }
+
+    /* 单行竖排 */
+    .text7{
+      color:lawngreen;
+      width:20px;
+      height: auto;
+      line-height: 24px;
+      font-size: 18px;
+      padding: 8px 5px;
+      word-wrap: break-word;
+    }
+    /* 多行竖排 */
+    .text8{
+      height: 200px;
+      line-height: 30px;
+      text-align:justify;
+      text-align-last: justify;
+      writing-mode: vertical-lr;
+    }
+  </style>
+</head>
+<body>
+  <div class="text1">
+    单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出
+    单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出
+    单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出单行溢出
+  </div><br>
+  <div class="text2">
+    多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出
+    多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出
+    多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出多行溢出
+  </div><br>
+  <div class="text3">
+    不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行
+    不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行
+  </div><br>
+  <div class="text4">
+    自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行
+    自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行自动换行
+  </div><br>
+  <div class="text5">
+    强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行
+    强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行强制换行
+  </div><br>
+  <div class="text6">
+    两端对齐两端对齐两端对齐两端对齐两端对齐两端对齐
+    两端对齐两端对齐两端对齐两端对齐两端对齐两端对齐
+    两端对齐两端对齐两端对齐两端对齐两端对齐两端对齐
+  </div><br>
+  <div class="text7">
+    单行竖排single
+  </div><br>
+  <div class="text8">
+    多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排
+    多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排
+    多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排多行竖排
+  </div>
+</body>
+</html>

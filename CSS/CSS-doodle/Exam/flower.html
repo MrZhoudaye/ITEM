@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/css-doodle@0.13.10/css-doodle.min.js"></script>
+    <style>
+        html,
+        body {
+            background-color: #000;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <css-doodle>
+            @grid: 1 / 70%;
+
+            background: radial-gradient(
+                yellow, #E91F63, #fff
+            );
+
+            clip-path: @shape(
+                fill-rule: evenodd;
+                split: 3600;
+                scale: .6;
+                r: cos(7t)^2 + sin(7t) + .3;
+            );
+        </css-doodle>
+    </div>
+</body>
+
+</html>

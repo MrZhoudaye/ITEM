@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: linear-gradient(to right top, red 50%, #fff 50%);
+            background-repeat: no-repeat;
+            background-size: 100% calc(100% - 100vh + 5px)
+            /* background-size:calc(100% + 5px)calc(100% – 100vh) */
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 5px;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: #fff;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="scrollBox"> -->
+    CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存CSS加载并不会阻塞DOM树的解析，但是会阻塞DOM树的渲染。这种方式，DOM解析完成在去渲染，防止重绘与回流；
+    CSS加载会阻塞JS的执行。
+    原理：浏览器的渲染机制决定的：DOMtree 和 CSSOMtree 并行解析，给予这两个生成rendertree；然后根rendertree生成页面。这就是为什么css不会阻塞DOM解析，但是会阻塞DOM渲染和js。
+    为了提高CSS的加载速度，可以考虑一下方式：
+    使用CDN缓存资源；压缩CSS文件；使用缓存机制（在文件后面添加版本号，防止文件更新后不缓存）；减少http请求，合并css文件（使用内嵌样式要注意内嵌样式不能缓存
+    <!-- </div> -->
+</body>
+
+</html>

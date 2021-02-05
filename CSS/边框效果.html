@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边框效果</title>
+
+    <style>
+        html,body{
+            background-color: #fff;
+        }
+
+        .main{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            /* border: 2px solid paleturquoise; */
+            padding: 20px;
+        }
+
+        .item1{
+            width: 120px;
+            height: 50px;
+            position: relative;
+            border: 1px solid brown;
+            cursor: pointer;
+        }
+        .item1::after,.item1::before{
+            content: '';
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            transition: all .6s ease-in-out;
+        }
+        .item1::before{
+            top: -5px;
+            left: -5px;
+            border-top: 1px solid brown;
+            border-left: 1px solid brown;
+        }
+        .item1::after{
+            bottom: -5px;
+            right: -5px;
+            border-bottom: 1px solid brown;
+            border-right: 1px solid brown;
+        }
+        .item1:hover::after,.item1:hover::before{
+            width: calc(100% + 9px);
+            height: calc(100% + 9px);
+        }
+
+        .item2{
+            width: 120px;
+            height: 50px;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(90deg,#333,#fff) repeat-x,
+            linear-gradient(90deg,#333,#fff) repeat-x,
+            linear-gradient(0deg,#333,#fff) repeat-y,
+            linear-gradient(0deg,#333,#fff) repeat-y;
+            background-size: 5px 1px,5px 1px,1px 5px,1px 5px;
+            background-position: 0 0,0 100%,0 0,100% 0;
+            outline: 1px solid #333;
+            outline-offset: -1px;
+        }
+        .item2:hover{
+            outline: 1px solid transparent;
+            animation: flowBorder .2s infinite linear;
+        }
+        @keyframes flowBorder{
+            100%{
+                background-position: 5px 0,-5px 100%,0 -5px,100% 5px;
+            }
+        }
+
+        .item3{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .item3::after{
+            content:'';
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background-repeat: no-repeat;
+            background-size: 50% 50%,50% 50%;
+            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+            background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
+            animation: rotateBorder 5s linear infinite;
+        }
+        .item3::before{
+            border-radius: 5px;
+            content: '';
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #fff;
+            z-index: 2;
+        }
+        @keyframes rotateBorder{
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        .item4{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .item4::after{
+            content:'';
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background-repeat: no-repeat;
+            background-size: 50% 50%;
+            background-position: 0 0;
+            background-image: linear-gradient(#399953, #399953);
+            animation: rotateBorder 5s linear infinite;
+        }
+        .item4::before{
+            border-radius: 5px;
+            content: '';
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #fff;
+            z-index: 2;
+        }
+
+        .item5{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .item5::after{
+            content:'';
+            position: absolute;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background-repeat: no-repeat;
+            background-size: 50% 50%,50% 50%;
+            background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+            background-image: conic-gradient(transparent, rgb(243, 100, 64), transparent 30%);
+            animation: rotateBorder 5s linear infinite;
+        }
+        .item5::before{
+            border-radius: 5px;
+            content: '';
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            background: #fff;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="box">
+            <div class="item1"></div>
+        </div>
+        <div class="box">
+            <div class="item2"></div>
+        </div>
+        <div class="box">
+            <div class="item3"></div>
+        </div>
+        <div class="box">
+            <div class="item4"></div>
+        </div>
+        <div class="box">
+            <div class="item5"></div>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
