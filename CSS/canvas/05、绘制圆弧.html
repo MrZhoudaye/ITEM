@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="drawing" width="500" height="500">A drawing of something</canvas>
+
+    <script>
+
+        var drawing = document.getElementById('drawing')
+
+        // 确定可以使用canvas
+        if (drawing.getContext) {
+            var context = drawing.getContext('2d')
+
+            // arc(x, y, radius, startAngle, endAngle, anticlockwise)
+            // 画一个以（x, y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，
+            // 按照anticlockwise给定的方向（默认为顺时针）来生成。
+            // 该方法有六个参数：x, y为绘制圆弧所在圆上的圆心坐标。
+            // radius为半径。startAngle以及endAngle参数用弧度定义了开始以及结束的弧度。
+            // 这些都是以x轴为基准。
+            // 参数anticlockwise为一个布尔值。为true时，是逆时针方向，否则顺时针方向。
+
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 3; j++) {
+                    context.beginPath()
+                    var x = 25 + j * 50
+                    var y = 25 + i * 50
+                    var radius = 20
+                    var startAngle = 0
+                    var endAngle = Math.PI + (Math.PI * j) / 2
+                    var anticlockwise = i % 2 == 0 ? true : false
+
+                    context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+
+                    if (i > 1) {
+                        context.fill()
+                    } else {
+                        context.stroke()
+                    }
+                }
+            }
+
+            context.beginPath()
+            context.arc(300,50,25,0,Math.PI/2,true)
+            context.stroke()
+        }
+
+    </script>
+</body>
+
+</html>

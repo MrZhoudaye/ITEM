@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="drawing" width="200" height="200">A drawing of something</canvas>
+
+  <script>
+
+    var drawing = document.getElementById('drawing')
+
+    // 确定可以使用canvas
+    if (drawing.getContext) {
+      var context = drawing.getContext('2d')
+
+      // 设置填充和描边
+      // context.strokeStyle = 'red'
+      // context.fillStyle = '#0000ff'
+
+      // 在（10,10）的位置 绘制一个 50*50的红色矩形
+      context.fillStyle = "#ff0000"
+      context.fillRect(10, 10, 50, 50)
+
+      // 在（30,30）的位置绘制一个 50*50的蓝色半透明矩形
+      context.fillStyle = "rgba(0,0,255,.5)"
+      context.fillRect(30, 30, 50, 50)
+
+      // 在（40，40）的位置切掉一个 10*10 的小方块
+      context.clearRect(40, 40, 10, 10)
+    }
+
+  </script>
+</body>
+
+</html>

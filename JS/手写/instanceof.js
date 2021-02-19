@@ -5,6 +5,7 @@ function myInstanceof(aims,type){
 
   // 如果是复杂数据类型
   let proto = Object.getPrototypeOf(aims)
+  console.log(proto,"-- INSERT --")
   if(proto == null) return false
 
   if(proto == type.prototype) return true
@@ -14,4 +15,4 @@ function myInstanceof(aims,type){
 console.log(myInstanceof('111',String))
 console.log(myInstanceof(new String("111"),String))
 
-console.log(![],!{})
+// console.log(![],!{})
