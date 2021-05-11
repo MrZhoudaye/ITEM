@@ -152,6 +152,7 @@ const resolvePromise = (promise2, x, resolve, reject) => {
       onRejected = typeof onRejected === 'function'?onRejected : (error) => {throw error}
 
       let promise2 = new Promise((resolve, reject) => {
+        // 回调要异步执行
         if(this.status === FUIFILLED){
           setTimeout(() => {
             try{

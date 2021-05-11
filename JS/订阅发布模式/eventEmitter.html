@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eventEmitter</title>
+
+    <style>
+        button{
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="btn">点击发送请求</button>
+
+    <script src="./eventEmitter.js"></script>
+    <script>
+        function getJson(url) {
+            // $.ajax({
+            //     url:url,
+            //     type:'GET',
+            //     dataType:'JSON',
+            //     success:function(result){
+            //         console.log(result)
+            //     }
+            // })
+            var XML = new XMLHttpRequest()
+            XML.onreadystatechange = function(){
+                if(XML.readyState == 4){
+                    if(XML.status == 200 || XML.status == 304){
+                        var result = XML.responseText
+                        console.log(result)
+                    }
+                }
+            }
+            var url = "http://localhost:3003/getapi"
+            XML.open("GET",url)
+            XML.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+
+            XML.send()
+            // console.log(url)
+        }
+
+        var _events = new EventEmitter()
+        _events.on('getJson',getJson)
+
+        // _events.emit('getJson',"../基础/test.json")
+        document.getElementById("btn").onclick = function(){
+            _events.emit('getJson',"../基础/test.json")
+        }
+    </script>
+</body>
+</html>
